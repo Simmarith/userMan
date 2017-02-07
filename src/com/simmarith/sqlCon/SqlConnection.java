@@ -8,7 +8,7 @@ import com.simmarith.utils.GlobalProperties;
 public class SqlConnection {
 	// Properties
 	private static SqlConnection instance;
-	private static Connection con;
+    private static Connection con;
 
 	//Methods
 	public SqlConnection getInstance() {
