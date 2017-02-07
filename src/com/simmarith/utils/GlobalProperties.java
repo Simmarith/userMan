@@ -10,7 +10,11 @@ public class GlobalProperties {
 	private static Properties props;
 	
 	//Methods
-	public void initProperties(String fileName) {
+	public static void initProperties() {
+		GlobalProperties.initProperties("/global.properties");
+	}
+	
+	public static void initProperties(String fileName) {
 		if (GlobalProperties.instance == null) {
 			GlobalProperties.instance = new GlobalProperties(fileName);
 		}
