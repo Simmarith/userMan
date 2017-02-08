@@ -15,7 +15,7 @@ public class FrontendView extends Application {
 
         Scene scene = new Scene(root, 600, 500);
 
-        primaryStage.getIcons().add(new Image("/org/aebian/umFrontend/icons/uMgmt.png"));
+        primaryStage.getIcons().add(new Image( FrontendController.AppImage));
         primaryStage.setTitle("User Management");
         primaryStage.setScene(scene);
         primaryStage.show();
