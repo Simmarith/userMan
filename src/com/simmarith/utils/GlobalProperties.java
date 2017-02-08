@@ -11,7 +11,7 @@ public class GlobalProperties {
 
     // Methods
     public static void initProperties() {
-        GlobalProperties.initProperties("/global.properties");
+        GlobalProperties.initProperties("res/global.properties");
     }
 
     public static void initProperties(String fileName) {
@@ -27,6 +27,7 @@ public class GlobalProperties {
     // Constructors
     private GlobalProperties(String fileName) {
         try {
+            GlobalProperties.props = new Properties();
             props.load(new FileInputStream(fileName));
         } catch (IOException e) {
             // TODO Auto-generated catch block
