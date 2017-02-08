@@ -6,6 +6,8 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
+import static org.aebian.umFrontend.FrontendController.*;
+
 public class FrontendView extends Application {
 
     @Override
@@ -15,7 +17,7 @@ public class FrontendView extends Application {
 
         Scene scene = new Scene(root, 600, 500);
 
-        primaryStage.getIcons().add(new Image( FrontendController.AppImage));
+        primaryStage.getIcons().add(new Image("file:res/images/uMgmt.png"));
         primaryStage.setTitle("User Management");
         primaryStage.setScene(scene);
         primaryStage.show();
