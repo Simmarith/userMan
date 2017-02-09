@@ -1,3 +1,4 @@
+/* Frontend Main Class by @Aebian */
 package org.aebian.umFrontend;
 
 public class Frontend extends FrontendView {
