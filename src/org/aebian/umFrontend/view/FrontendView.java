@@ -1,5 +1,5 @@
 /* FrontendView Class by @Aebian */
-package org.aebian.umFrontend;
+package org.aebian.umFrontend.view;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -24,34 +24,22 @@ public class FrontendView extends Application {
     @Override
     public void start(Stage primaryStage) {
 
-        HBox root = new HBox(); // StackPane puts Nodes on top of each other so I use HBox instead
+        //HBox root = new HBox(); // StackPane puts Nodes on top of each other so I use HBox instead
+        GridPane root = new GridPane();
+        //root.setSpacing(8);
+        root.setStyle("-fx-background-color: #4580BA;");
 
-        primaryStage.setMinWidth(600);
+        primaryStage.setMinWidth(800);
         primaryStage.setMinHeight(500);
-        primaryStage.getIcons().add(new Image("file:res/images/uMgmt.png"));
+        primaryStage.setResizable(false);
 
+        primaryStage.getIcons().add(new Image("file:res/images/uMgmt.png"));
         primaryStage.setTitle("User Management");
         Scene scene = new Scene(root, 800, 500);
-        primaryStage.setScene(scene);
 
+        primaryStage.setScene(scene);
         primaryStage.show();
         root.setAlignment( Pos.CENTER );
-        TilePane vLogin = new TilePane(Orientation.HORIZONTAL);
-
-        vLogin.setPadding(new Insets(440, 0, 0, 250));
-        vLogin.setHgap(10.0);
-        root.getChildren().add(vLogin);
-
-        final Button btnLogin = new Button("Login");
-        btnLogin.setAlignment(Pos.CENTER);
-        vLogin.getChildren().addAll(btnLogin);
-
-        // #Login Form
-
-        Label lblName = new Label("User name:");
-        TextField tfName = new TextField();
-        Label lblPwd = new Label("Password:");
-        PasswordField pfPwd = new PasswordField();
 
     }
 }
