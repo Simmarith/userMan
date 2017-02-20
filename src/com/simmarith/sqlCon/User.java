@@ -7,6 +7,7 @@ public class User extends DbEntity {
     // Properties
     private String fName = null;
     private String lName = null;
+    private String password = null;
     private String skype = null;
     private String mail = null;
     private String tel = null;
@@ -35,6 +36,21 @@ public class User extends DbEntity {
         this.lName = lname;
     }
 
+    public String getUserName() {
+        return this.getFname() + "." + this.getLname();
+    }
+    
+    public String getPassword() {
+        if (this.password == null) {
+            this.password = super.fetchProperty("password");
+        }
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    
     public String getSkype() {
         if (this.skype == null) {
             this.skype = super.fetchProperty("skype");
@@ -83,9 +99,9 @@ public class User extends DbEntity {
     public void persist() {
         if (this.getId() == null) {
             ResultSet res = this.con.sql(String
-                            .format("insert into %s (fname, lname, skype, mail, tel) values ('%s', '%s', '%s', '%s', '%s')",
+                            .format("insert into %s (fname, lname, password, skype, mail, tel) values ('%s', '%s', '%s', '%s', '%s', '%s')",
                                     this.tableName, this.getFname(),
-                                    this.getLname(), this.getSkype(),
+                                    this.getLname(), this.getPassword(), this.getSkype(),
                                     this.getMail(), this.getTel()));
             try {
                 res.next();
@@ -97,8 +113,8 @@ public class User extends DbEntity {
             }
         }
         this.con.sql(String
-                .format("update %s set fname = '%s', lname = '%s', skype = '%s', mail = '%s', tel = '%s' where id = %s",
-                        this.tableName, this.getFname(), this.getLname(),
+                .format("update %s set fname = '%s', lname = '%s', password = '%s', skype = '%s', mail = '%s', tel = '%s' where id = %s",
+                        this.tableName, this.getFname(), this.getLname(), this.getPassword(),
                         this.getSkype(), this.getMail(), this.getTel(), this.getId()));
     }
 
