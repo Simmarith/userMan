@@ -14,6 +14,7 @@ public class SqlConnection {
     private static SqlConnection instance;
     private static Connection con;
     private static String dmlPattern = "(?i)^INSERT[\\S\\s]*|^UPDATE[\\S\\s]*|^DROP[\\S\\s]*";
+    private static String isInsert = "(?i)^INSERT[\\S\\s]*";
 
     // Methods
     public static SqlConnection getInstance() {
@@ -27,6 +28,10 @@ public class SqlConnection {
         try {
             Statement state = con.createStatement();
             if (Pattern.matches(SqlConnection.dmlPattern, query)) {
+                if (Pattern.matches(SqlConnection.isInsert, query)) {
+                    state.executeUpdate(query, Statement.RETURN_GENERATED_KEYS);
+                    return state.getGeneratedKeys();
+                }
                 state.executeUpdate(query);
             } else {
                 return state.executeQuery(query);
