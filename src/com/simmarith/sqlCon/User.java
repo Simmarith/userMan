@@ -1,7 +1,9 @@
 package com.simmarith.sqlCon;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class User extends DbEntity {
     // Properties
@@ -96,6 +98,21 @@ public class User extends DbEntity {
     }
 
     // Methods
+    public static ArrayList<User> getAllUsers() {
+        SqlConnection con = SqlConnection.getInstance();
+        ArrayList<User> allUsers = new ArrayList<>();
+        ResultSet res = con.sql("Select id from user");
+        try {
+            while (res.next()) {
+                allUsers.add(new User(Long.toString(res.getLong(1))));
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return allUsers;
+    }
+    
     public void persist() {
         if (this.getId() == null) {
             ResultSet res = this.con.sql(String
