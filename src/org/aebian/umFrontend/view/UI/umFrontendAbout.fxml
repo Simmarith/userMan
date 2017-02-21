@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER" prefHeight="600.0" prefWidth="900.0"
+      xmlns="http://javafx.com/javafx/8" fx:controller="org.aebian.umFrontend.view.FrontendView">
+    <children>
+        <SplitPane focusTraversable="true" orientation="VERTICAL" prefHeight="-1.0" prefWidth="-1.0"
+                   VBox.vgrow="ALWAYS">
+            <items>
+                <AnchorPane prefHeight="576.0" prefWidth="328.0">
+                    <children>
+                        <Label layoutX="272.0" layoutY="121.0" text="Java User Managment">
+                            <font>
+                                <Font size="24.0"/>
+                            </font>
+                        </Label>
+                        <Label layoutX="228.0" layoutY="164.0"
+                               text="A java written user management solution with mysql support"/>
+                        <Label layoutX="251.0" layoutY="181.0"
+                               text="© 2017 by Adrian (Simmarith) &amp; Alexander (Aebian)"/>
+                        <Label alignment="CENTER" layoutX="38.0" layoutY="14.0" minWidth="60.0" prefWidth="-1.0"
+                               style="&#10;" text="User Management \ About" textAlignment="CENTER" wrapText="false">
+                            <font>
+                                <Font size="18.0" fx:id="x1"/>
+                            </font>
+                            <textFill>
+                                <Color blue="0.624" green="0.624" red="0.624" fx:id="x2"/>
+                            </textFill>
+                        </Label>
+                        <Label layoutX="338.0" layoutY="220.0" text="aebian@aebian.org"/>
+                    </children>
+                </AnchorPane>
+            </items>
+        </SplitPane>
+    </children>
+</VBox>

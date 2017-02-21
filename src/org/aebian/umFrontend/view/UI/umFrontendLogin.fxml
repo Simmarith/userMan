@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
 <?import java.lang.*?>
-<?import java.net.*?>
-<?import java.util.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
 
-<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-  <children>
-    <SplitPane focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
-      <items>
-        <AnchorPane prefHeight="576.0" prefWidth="328.0">
-          <children>
-            <Label alignment="CENTER" layoutX="42.0" layoutY="14.0" minWidth="60.0" prefWidth="-1.0" style="&#10;" text="User Managment" textAlignment="CENTER" wrapText="false">
-              <font>
-                <Font size="18.0" fx:id="x1" />
-              </font>
-              <textFill>
-                <Color blue="0.624" green="0.624" red="0.624" fx:id="x2" />
-              </textFill>
-            </Label>
-                  <PasswordField layoutX="417.0" layoutY="182.0" prefHeight="34.0" prefWidth="268.0" />
-                  <Label layoutX="417.0" layoutY="165.0" text="Password" />
-                  <Button layoutX="639.0" layoutY="276.0" mnemonicParsing="false" text="Login" />
-                  <TextField layoutX="79.0" layoutY="182.0" prefHeight="34.0" prefWidth="254.0" />
-                  <Label layoutX="79.0" layoutY="165.0" text="Username" />
-          </children>
-        </AnchorPane>
-      </items>
-    </SplitPane>
-  </children>
+<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.aebian.umFrontend.view.FrontendView">
+    <children>
+        <SplitPane focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+            <items>
+                <AnchorPane prefHeight="576.0" prefWidth="328.0">
+                    <children>
+                        <Label alignment="CENTER" layoutX="42.0" layoutY="14.0" minWidth="60.0" prefWidth="-1.0" style="&#10;" text="User Managment \ Login" textAlignment="CENTER" wrapText="false">
+                            <font>
+                                <Font size="18.0" fx:id="x1" />
+                            </font>
+                            <textFill>
+                                <Color blue="0.624" green="0.624" red="0.624" fx:id="x2" />
+                            </textFill>
+                        </Label>
+                        <PasswordField layoutX="417.0" layoutY="182.0" prefHeight="34.0" prefWidth="268.0" fx:id="pwField" onAction="#handleButtonAction"/>
+                        <Label layoutX="417.0" layoutY="165.0" text="Password" />
+                        <Button fx:id="btnLogin" layoutX="639.0" layoutY="276.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Login" />
+                        <TextField layoutX="79.0" layoutY="182.0" prefHeight="34.0" prefWidth="254.0" />
+                        <Label layoutX="79.0" layoutY="165.0" text="Username" />
+                    </children>
+                </AnchorPane>
+            </items>
+        </SplitPane>
+    </children>
 </VBox>
