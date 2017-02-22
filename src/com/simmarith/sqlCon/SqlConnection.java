@@ -13,7 +13,7 @@ public class SqlConnection {
     // Properties
     private static SqlConnection instance;
     private static Connection con;
-    private static String dmlPattern = "(?i)^INSERT[\\S\\s]*|^UPDATE[\\S\\s]*|^DROP[\\S\\s]*";
+    private static String dmlPattern = "(?i)^INSERT[\\S\\s]*|^UPDATE[\\S\\s]*|^DROP[\\S\\s]*|^DELETE[\\S\\s]*|^ALTER[\\S\\s]*";
     private static String isInsert = "(?i)^INSERT[\\S\\s]*";
 
     // Methods
