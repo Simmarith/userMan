@@ -6,7 +6,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 <VBox xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER" prefHeight="600.0" prefWidth="900.0"
-      xmlns="http://javafx.com/javafx/8" fx:controller="org.aebian.umFrontend.view.FrontendView">
+      xmlns="http://javafx.com/javafx/8" fx:id="vsAbout" fx:controller="org.aebian.umFrontend.view.FrontendView">
     <children>
         <SplitPane focusTraversable="true" orientation="VERTICAL" prefHeight="-1.0" prefWidth="-1.0"
                    VBox.vgrow="ALWAYS">
