@@ -134,6 +134,11 @@ public class User extends DbEntity {
         this.permissions = null;
     }
     
+    public void revokePermission(Permission permission) {
+        this.con.sql(String.format("delete from user_permission where id_user = %s and id_permission = %s", this.getId(), permission.getId()));
+        this.permissions = null;
+    }
+    
     public void persist() {
         if (this.getId() == null) {
             ResultSet res = this.con.sql(String
