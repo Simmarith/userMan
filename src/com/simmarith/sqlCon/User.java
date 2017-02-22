@@ -1,6 +1,5 @@
 package com.simmarith.sqlCon;
 
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -14,11 +13,12 @@ public class User extends DbEntity {
     private String mail = null;
     private String tel = null;
     private String house = null;
+    private ArrayList<Permission> permissions = null;
 
     // Getter and Setter
     public String getFname() {
         if (this.fName == null) {
-            this.fName = super.fetchProperty("fname");
+            this.fName = this.fetchProperty("fname");
         }
         return this.fName;
     }
@@ -29,7 +29,7 @@ public class User extends DbEntity {
 
     public String getLname() {
         if (this.lName == null) {
-            this.lName = super.fetchProperty("lname");
+            this.lName = this.fetchProperty("lname");
         }
         return lName;
     }
@@ -44,7 +44,7 @@ public class User extends DbEntity {
     
     public String getPassword() {
         if (this.password == null) {
-            this.password = super.fetchProperty("password");
+            this.password = this.fetchProperty("password");
         }
         return password;
     }
@@ -55,7 +55,7 @@ public class User extends DbEntity {
     
     public String getSkype() {
         if (this.skype == null) {
-            this.skype = super.fetchProperty("skype");
+            this.skype = this.fetchProperty("skype");
         }
         return skype;
     }
@@ -66,7 +66,7 @@ public class User extends DbEntity {
 
     public String getMail() {
         if (this.mail == null) {
-            this.mail = super.fetchProperty("mail");
+            this.mail = this.fetchProperty("mail");
         }
         return mail;
     }
@@ -77,7 +77,7 @@ public class User extends DbEntity {
 
     public String getTel() {
         if (this.tel == null) {
-            this.tel = super.fetchProperty("tel");
+            this.tel = this.fetchProperty("tel");
         }
         return tel;
     }
@@ -88,13 +88,29 @@ public class User extends DbEntity {
 
     public String getHouse() {
         if (this.house == null) {
-            this.house = super.fetchProperty("house");
+            this.house = this.fetchProperty("house");
         }
         return house;
     }
 
     public void setHouse(String house) {
         this.house = house;
+    }
+    
+    public ArrayList<Permission> getPermissions() {
+        if (this.permissions == null) {
+            this.permissions = new ArrayList<>();
+            ResultSet res = this.con.sql("Select p.id from user_permission up left join permission p on up.id_permission = p.id where up.id_user = " + this.getId());
+            try {
+                while (res.next()) {
+                    this.permissions.add(new Permission(Long.toString(res.getLong(1))));
+                }
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+        return this.permissions;
     }
 
     // Methods
@@ -111,6 +127,11 @@ public class User extends DbEntity {
             e.printStackTrace();
         }
         return allUsers;
+    }
+    
+    public void addPermission(Permission permission) {
+        this.con.sql(String.format("insert into user_permission (id_user, id_permission) values (%s, %s)", this.getId(), permission.getId()));
+        this.permissions = null;
     }
     
     public void persist() {
