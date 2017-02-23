@@ -12,7 +12,7 @@ public class User extends DbEntity {
     private String skype = null;
     private String mail = null;
     private String tel = null;
-    private String house = null;
+    private ArrayList<House> houses = null;
     private ArrayList<Permission> permissions = null;
 
     // Getter and Setter
@@ -41,7 +41,7 @@ public class User extends DbEntity {
     public String getUserName() {
         return this.getFname() + "." + this.getLname();
     }
-    
+
     public String getPassword() {
         if (this.password == null) {
             this.password = this.fetchProperty("password");
@@ -52,7 +52,7 @@ public class User extends DbEntity {
     public void setPassword(String password) {
         this.password = password;
     }
-    
+
     public String getSkype() {
         if (this.skype == null) {
             this.skype = this.fetchProperty("skype");
@@ -86,24 +86,16 @@ public class User extends DbEntity {
         this.tel = tel;
     }
 
-    public String getHouse() {
-        if (this.house == null) {
-            this.house = this.fetchProperty("house");
-        }
-        return house;
-    }
-
-    public void setHouse(String house) {
-        this.house = house;
-    }
-    
     public ArrayList<Permission> getPermissions() {
         if (this.permissions == null) {
             this.permissions = new ArrayList<>();
-            ResultSet res = this.con.sql("Select p.id from user_permission up left join permission p on up.id_permission = p.id where up.id_user = " + this.getId());
+            ResultSet res = this.con
+                    .sql("Select p.id from user_permission up left join permission p on up.id_permission = p.id where up.id_user = "
+                            + this.getId());
             try {
                 while (res.next()) {
-                    this.permissions.add(new Permission(Long.toString(res.getLong(1))));
+                    this.permissions.add(new Permission(Long.toString(res
+                            .getLong(1))));
                 }
             } catch (SQLException e) {
                 // TODO Auto-generated catch block
@@ -111,6 +103,24 @@ public class User extends DbEntity {
             }
         }
         return this.permissions;
+    }
+
+    public ArrayList<House> getHouses() {
+        if (this.houses == null) {
+            this.houses = new ArrayList<>();
+            ResultSet res = this.con
+                    .sql("Select h.id from user_house uh left join house h on uh.id_house = h.id where uh.id_user = "
+                            + this.getId());
+            try {
+                while (res.next()) {
+                    this.houses.add(new House(Long.toString(res.getLong(1))));
+                }
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+        return this.houses;
     }
 
     // Methods
@@ -128,24 +138,44 @@ public class User extends DbEntity {
         }
         return allUsers;
     }
-    
+
     public void addPermission(Permission permission) {
-        this.con.sql(String.format("insert into user_permission (id_user, id_permission) values (%s, %s)", this.getId(), permission.getId()));
+        this.con.sql(String
+                .format("insert into user_permission (id_user, id_permission) values (%s, %s)",
+                        this.getId(), permission.getId()));
         this.permissions = null;
     }
-    
+
     public void revokePermission(Permission permission) {
-        this.con.sql(String.format("delete from user_permission where id_user = %s and id_permission = %s", this.getId(), permission.getId()));
+        this.con.sql(String
+                .format("delete from user_permission where id_user = %s and id_permission = %s",
+                        this.getId(), permission.getId()));
         this.permissions = null;
     }
-    
+
+    public void addHouse(House house) {
+        this.con.sql(String.format(
+                "insert into user_house (id_user, id_house) values (%s, %s)",
+                this.getId(), house.getId()));
+        this.houses = null;
+    }
+
+    public void removeHouse(House house) {
+        this.con.sql(String
+                .format("delete from user_house where id_user = %s and id_permission = %s",
+                        this.getId(), house.getId()));
+        this.houses = null;
+    }
+
     public void persist() {
         if (this.getId() == null) {
-            ResultSet res = this.con.sql(String
+            ResultSet res = this.con
+                    .sql(String
                             .format("insert into %s (fname, lname, password, skype, mail, tel) values ('%s', '%s', '%s', '%s', '%s', '%s')",
                                     this.tableName, this.getFname(),
-                                    this.getLname(), this.getPassword(), this.getSkype(),
-                                    this.getMail(), this.getTel()));
+                                    this.getLname(), this.getPassword(),
+                                    this.getSkype(), this.getMail(),
+                                    this.getTel()));
             try {
                 res.next();
                 this.setId(Long.toString(res.getLong(1)));
@@ -157,8 +187,9 @@ public class User extends DbEntity {
         }
         this.con.sql(String
                 .format("update %s set fname = '%s', lname = '%s', password = '%s', skype = '%s', mail = '%s', tel = '%s' where id = %s",
-                        this.tableName, this.getFname(), this.getLname(), this.getPassword(),
-                        this.getSkype(), this.getMail(), this.getTel(), this.getId()));
+                        this.tableName, this.getFname(), this.getLname(),
+                        this.getPassword(), this.getSkype(), this.getMail(),
+                        this.getTel(), this.getId()));
     }
 
     // Constructors
