@@ -79,11 +79,6 @@ public class FrontendView extends Application {
 
     }
 
-    public void initialize() {
-
-        permListView.getItems().addAll(returnPermissions());
-    }
-
     public void showRoot() { // Load root layout
         try {
             FXMLLoader loader = new FXMLLoader();
