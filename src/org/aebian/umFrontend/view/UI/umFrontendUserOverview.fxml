@@ -1,28 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.*?>
+<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
-<VBox xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER" prefHeight="600.0" prefWidth="900.0"
-      xmlns="http://javafx.com/javafx/8" fx:id="vsUOverview" fx:controller="org.aebian.umFrontend.view.FrontendView">
+
+<VBox fx:id="vsUOverview" alignment="CENTER" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.aebian.umFrontend.view.FrontendView">
     <children>
-        <SplitPane focusTraversable="true" orientation="VERTICAL" prefHeight="-1.0" prefWidth="-1.0"
-                   VBox.vgrow="ALWAYS">
+        <SplitPane focusTraversable="true" orientation="VERTICAL" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
             <items>
-                <AnchorPane prefHeight="576.0" prefWidth="328.0">
+                <AnchorPane fx:id="anPane" prefHeight="355.0" prefWidth="655.0">
                     <children>
-                        <Label alignment="CENTER" layoutX="38.0" layoutY="14.0" minWidth="60.0" prefWidth="-1.0"
-                               style="&#10;" text="User Management \ User Area" textAlignment="CENTER" wrapText="false">
+                        <Label alignment="CENTER" layoutX="38.0" layoutY="14.0" minWidth="60.0" prefWidth="-1.0" style="&#10;" text="User Management \ User Area" textAlignment="CENTER" wrapText="false">
                             <font>
-                                <Font size="18.0" fx:id="x1"/>
+                                <Font size="18.0" fx:id="x1" />
                             </font>
                             <textFill>
-                                <Color blue="0.624" green="0.624" red="0.624" fx:id="x2"/>
+                                <Color blue="0.624" green="0.624" red="0.624" fx:id="x2" />
                             </textFill>
                         </Label>
+                        <TabPane layoutX="220.0" layoutY="56.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="323.0" prefWidth="390.0" side="RIGHT" style="-fx-border-color: #79233E;" tabClosingPolicy="UNAVAILABLE">
+                        <tabs>
+                        <Tab text="U">
+                           <content>
+                             <AnchorPane fx:id="btnApane" minHeight="0.0" minWidth="0.0" prefHeight="370.0" prefWidth="359.0">
+                                 <children>
+                                     <TextField fx:id="firstnField" layoutX="14.0" layoutY="36.0" />
+                                     <TextField fx:id="lastnField" layoutX="185.0" layoutY="36.0" />
+                                     <Label layoutX="14.0" layoutY="19.0" text="First Name" />
+                                     <Label layoutX="185.0" layoutY="19.0" text="Last Name" />
+                                     <TextField fx:id="emailField" layoutX="14.0" layoutY="89.0" prefHeight="25.0" prefWidth="323.0" />
+                                     <Label layoutX="14.0" layoutY="72.0" text="E-Mail" />
+                           <TextField fx:id="streetField" layoutX="14.0" layoutY="152.0" prefHeight="25.0" prefWidth="257.0" />
+                           <Label layoutX="14.0" layoutY="135.0" text="Street" />
+                           <TextField fx:id="houseField" layoutX="285.0" layoutY="152.0" prefHeight="25.0" prefWidth="53.0" />
+                           <Label layoutX="285.0" layoutY="135.0" text="Number" />
+                           <TextField fx:id="pcodeField" layoutX="14.0" layoutY="210.0" prefHeight="25.0" prefWidth="85.0" />
+                           <Label layoutX="14.0" layoutY="193.0" text="Postal Code" />
+                           <TextField fx:id="cityField" layoutX="126.0" layoutY="210.0" prefHeight="25.0" prefWidth="213.0" />
+                           <Label layoutX="129.0" layoutY="193.0" text="City" />
+                                    <Button fx:id="btnUpdate" layoutX="260.0" layoutY="282.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Update Info" />
+                                    <Button fx:id="btnchngPW" layoutX="230.0" layoutY="246.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Change Password" />
+                                 </children>
+                             </AnchorPane>
+                           </content>
+                        </Tab>
+                        <Tab text="P">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <Label layoutX="21.0" layoutY="14.0" text="Your assigned permissions:" />
+                                    <ListView fx:id="permListView" layoutX="5.0" layoutY="39.0" prefHeight="257.0" prefWidth="348.0" />
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </Tab>
+                        </tabs>
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                        </TabPane>
+                        <Button fx:id="btnLogout" layoutX="80.0" layoutY="56.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="79.0" text="Logout" />
+                        <Button fx:id="btnAdmin" layoutX="80.0" layoutY="97.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="79.0" text="Admin Area" />
                     </children>
                 </AnchorPane>
             </items>

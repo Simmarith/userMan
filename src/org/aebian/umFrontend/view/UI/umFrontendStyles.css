@@ -45,10 +45,11 @@
 .button {
     -fx-text-fill: white;
     -fx-background-color: #79233E, derive(#79233E, 25%);
+    -fx-border-color: darkslategrey;
 }
 
 .toggle-button {
-    -fx-background-color: -fx-shadow-highlight-color, -fx-outer-border,
+    -fx-background-color: darkslategrey, -fx-outer-border,
     -fx-inner-border, -fx-body-color;
     -fx-text-fill: -fx-text-base-color;
 }
@@ -59,4 +60,8 @@
 
 .toggle-button:selected:focused {
     -fx-background-color: -fx-focus-color
+}
+
+.tab-pane {
+    -fx-stroke: #79233E;
 }

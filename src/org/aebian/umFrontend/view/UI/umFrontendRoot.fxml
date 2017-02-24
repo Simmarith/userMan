@@ -1,24 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:id="rootLayout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-            minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8"
-            fx:controller="org.aebian.umFrontend.view.FrontendView">
+
+<BorderPane fx:id="rootLayout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.aebian.umFrontend.view.FrontendView">
     <top>
         <MenuBar id="MenuBar" BorderPane.alignment="CENTER">
             <menus>
                 <Menu mnemonicParsing="false" text="File">
                     <items>
-                        <MenuItem fx:id="appClose" mnemonicParsing="false" onAction="#handleButtonAction" text="Close"/>
+                        <MenuItem fx:id="appMgmt" mnemonicParsing="false" onAction="#handleButtonAction" text="Management" />
+                  <MenuItem fx:id="appClose" mnemonicParsing="false" onAction="#handleButtonAction" text="Close" />
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Help">
                     <items>
-                        <MenuItem fx:id="appAbout" mnemonicParsing="false" onAction="#handleButtonAction" text="About"/>
+                        <MenuItem fx:id="appAbout" mnemonicParsing="false" onAction="#handleButtonAction" text="About" />
                     </items>
                 </Menu>
             </menus>
@@ -27,22 +31,20 @@
     <bottom>
         <HBox prefHeight="22.0" prefWidth="800.0" BorderPane.alignment="CENTER">
             <children>
-                <Label maxHeight="1.7976931348623157E308" maxWidth="-1.0" text="© 2017 by Aebian &amp; Simmarith"
-                       HBox.hgrow="ALWAYS">
+                <Label maxHeight="1.7976931348623157E308" maxWidth="-1.0" text="© 2017 by Aebian &amp; Simmarith" HBox.hgrow="ALWAYS">
                     <font>
-                        <Font size="11.0" fx:id="x3"/>
+                        <Font size="11.0" fx:id="x3" />
                     </font>
                     <textFill>
-                        <Color blue="0.625" green="0.625" red="0.625" fx:id="x4"/>
+                        <Color blue="0.625" green="0.625" red="0.625" fx:id="x4" />
                     </textFill>
                 </Label>
-                <Pane prefHeight="-1.0" prefWidth="-1.0" HBox.hgrow="ALWAYS"/>
-                <Label font="$x3" maxWidth="-1.0" text=" v0.5" textFill="$x4" HBox.hgrow="NEVER"/>
+                <Pane prefHeight="-1.0" prefWidth="-1.0" HBox.hgrow="ALWAYS" />
+                <Label font="$x3" maxWidth="-1.0" text=" v0.5" textFill="$x4" HBox.hgrow="NEVER" />
             </children>
             <padding>
-                <Insets bottom="3.0" left="3.0" right="3.0" top="3.0"/>
+                <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
             </padding>
         </HBox>
     </bottom>
 </BorderPane>
-
